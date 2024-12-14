@@ -123,15 +123,26 @@ const Block = () => {
             >
               Connect
             </button>
-            <button
-              className="mt-2 bg-red-700 p-1 rounded"
-              onClick={e => {
-                e.stopPropagation();
-                setEndPoint(block.id); // Set this block as the end point
-              }}
-            >
-              Set as End Point
-            </button>
+            {endPoint !== block.id && (
+              <button
+                className="mt-2 bg-red-700 p-1 rounded"
+                onClick={e => {
+                  e.stopPropagation();
+                  setEndPoint(block.id); // Set this block as the end point
+                }}
+              >
+                Set as End Point
+              </button>
+            )}
+            {/* <button
+                className="mt-2 bg-red-700 p-1 rounded"
+                onClick={e => {
+                  e.stopPropagation();
+                  setEndPoint(block.id); // Set this block as the end point
+                }}
+              >
+                Set as End Point
+              </button> */}
           </div>
         </Draggable>
       ))}
