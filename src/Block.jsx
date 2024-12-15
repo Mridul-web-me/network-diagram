@@ -102,10 +102,10 @@ const Block = () => {
       {/* Render blocks */}
       {blocks.map(block => (
         <Draggable key={block.id} position={{ x: block.x, y: block.y }} onStop={(e, data) => updateBlockPosition(block.id, data.x, data.y)}>
-          <div className={`absolute p-4 flex flex-col items-center justify-center rounded shadow-md cursor-pointer ${endPoint === block.id ? 'bg-[#FF2929] border-4 ' : 'bg-slate-500'} text-white`}>
+          <div className={`absolute p-4 flex flex-col items-center justify-center rounded shadow-md cursor-pointer ${endPoint === block.id ? 'bg-[#FF2929] border-4 ' : 'border-gray-300 border '}`}>
             <div>{block.id}</div>
             <button
-              className="mt-2 bg-[#80C4E9] p-1 rounded"
+              className="mt-2 border-gray-300 border hover:bg-gray-200 p-2 rounded"
               onClick={e => {
                 e.stopPropagation();
                 addBlock();
@@ -114,7 +114,7 @@ const Block = () => {
               Add Block
             </button>
             <button
-              className="mt-2 bg-[#118B50] p-1 rounded"
+              className="mt-2 bg-black text-white hover:bg-gray-800 p-2 rounded"
               onClick={e => {
                 e.stopPropagation();
                 const toId = prompt('Enter the ID of the block to connect to:');
@@ -125,7 +125,7 @@ const Block = () => {
             </button>
             {endPoint !== block.id && (
               <button
-                className="mt-2 bg-red-700 p-1 rounded"
+                className="mt-2 bg-red-700 p-2 hover:bg-red-600 text-white rounded"
                 onClick={e => {
                   e.stopPropagation();
                   setEndPoint(block.id); // Set this block as the end point
