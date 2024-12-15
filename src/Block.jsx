@@ -102,10 +102,10 @@ const Block = () => {
       {/* Render blocks */}
       {blocks.map(block => (
         <Draggable key={block.id} position={{ x: block.x, y: block.y }} onStop={(e, data) => updateBlockPosition(block.id, data.x, data.y)}>
-          <div className={`absolute p-4 flex flex-col items-center justify-center rounded shadow-md cursor-pointer ${endPoint === block.id ? 'bg-[#FF2929] border-4 ' : 'border-gray-300 border '}`}>
+          <div className={`absolute p-4 flex flex-col items-center justify-center z-50 rounded shadow-md cursor-pointer ${endPoint === block.id ? 'bg-black border p-4' : 'border-gray-300 border bg-gray-50 '}`}>
             <div>{block.id}</div>
             <button
-              className="mt-2 border-gray-300 border hover:bg-gray-200 p-2 rounded"
+              className="mt-2 border-gray-300 border bg-gray-50 hover:bg-gray-200 p-2 rounded"
               onClick={e => {
                 e.stopPropagation();
                 addBlock();
@@ -114,7 +114,7 @@ const Block = () => {
               Add Block
             </button>
             <button
-              className="mt-2 bg-black text-white hover:bg-gray-800 p-2 rounded"
+              className={`mt-2 bg-black text-white hover:bg-gray-800 p-2 rounded ${endPoint === block.id ? 'bg-black border ' : 'border-gray-300 border '}`}
               onClick={e => {
                 e.stopPropagation();
                 const toId = prompt('Enter the ID of the block to connect to:');
